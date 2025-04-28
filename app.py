@@ -10,7 +10,7 @@ load_dotenv()
 app = Flask(__name__)
 
 # Get Together API key from environment variable
-TOGETHER_API_KEY = "48f9c755e2c58b87c42591041735a5152eb82c86b4262a3acd8d3ebba1e3e590"
+TOGETHER_API_KEY = "Enter_your_Together_API_key_here"  # os.getenv('TOGETHER_API_KEY')
 if not TOGETHER_API_KEY:
     print("WARNING: TOGETHER_API_KEY environment variable not set")
 
