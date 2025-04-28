@@ -1,0 +1,290 @@
+:root {
+    --primary-color: #6C63FF;
+    --secondary-color: #4ECDC4;
+    --accent-color: #FF6B6B;
+    --dark-color: #2A2D34;
+    --light-color: #F7F9FC;
+    --easy-color: #00C896;
+    --medium-color: #FFB347;
+    --hard-color: #FF5757;
+    --gradient-primary: linear-gradient(135deg, var(--primary-color), #8067FF);
+    --glass-effect: rgba(255, 255, 255, 0.15);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.2);
+    --glass-blur: blur(10px);
+    --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.08);
+    --shadow-strong: 0 12px 36px rgba(13, 12, 34, 0.16);
+    --animation-speed: 0.3s;
+    --font-main: 'DM Sans', sans-serif;
+}
+
+body {
+    background: radial-gradient(circle at top right, rgba(108, 99, 255, 0.1), transparent 500px),
+                radial-gradient(circle at left bottom, rgba(78, 205, 196, 0.1), transparent 500px);
+    background-color: var(--light-color);
+    font-family: var(--font-main);
+    color: var(--dark-color);
+    min-height: 100vh;
+    padding-bottom: 3rem;
+}
+
+.container {
+    max-width: 900px;
+}
+
+/* Header styling */
+h1.text-center {
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 2rem;
+    letter-spacing: -0.5px;
+    font-size: 2.5rem;
+    position: relative;
+    text-shadow: 0 2px 10px rgba(108, 99, 255, 0.2);
+}
+
+h1.text-center::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+}
+
+/* Card styling with glass morphism */
+.card {
+    background: var(--glass-effect);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+    transition: transform var(--animation-speed), box-shadow var(--animation-speed);
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-strong);
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.card-header {
+    background: var(--gradient-primary);
+    color: white;
+    border-radius: 16px 16px 0 0 !important;
+    padding: 1.25rem 2rem;
+    border: none;
+}
+
+/* Form styling */
+.form-control {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(108, 99, 255, 0.2);
+    border-radius: 12px;
+    padding: 0.8rem 1.2rem;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all var(--animation-speed);
+}
+
+.form-control:focus {
+    background-color: white;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.25);
+}
+
+.form-label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--dark-color);
+    font-size: 0.95rem;
+}
+
+/* Button styling */
+.btn-primary {
+    background: var(--gradient-primary);
+    border: none;
+    border-radius: 12px;
+    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+    transition: all var(--animation-speed);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.6s;
+    z-index: -1;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
+    background: linear-gradient(135deg, #5046e5, #7c67ff);
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+.btn-primary:focus {
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.3);
+}
+
+/* Accordion styling */
+.accordion-item {
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-soft);
+    background-color: white;
+    transition: transform var(--animation-speed), box-shadow var(--animation-speed);
+}
+
+.accordion-item:hover {
+    transform: translateX(5px);
+}
+
+.accordion-button {
+    padding: 1.25rem 1.5rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    font-size: 1.05rem;
+    background-color: white;
+    border: none;
+    position: relative;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: rgba(108, 99, 255, 0.05);
+    color: var(--primary-color);
+}
+
+.accordion-button::after {
+    background-size: 1.2rem;
+    transition: all var(--animation-speed);
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: transparent;
+}
+
+.accordion-body {
+    padding: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Badge styling */
+.badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.35em 0.65em;
+    border-radius: 6px;
+}
+
+.bg-success {
+    background-color: var(--easy-color) !important;
+}
+
+.bg-warning {
+    background-color: var(--medium-color) !important;
+}
+
+.bg-danger {
+    background-color: var(--hard-color) !important;
+}
+
+/* Animation for showing answers */
+.accordion-collapse {
+    transition: all 0.4s ease-out;
+}
+
+.accordion-collapse.collapsing {
+    transform-origin: top;
+    transform: scaleY(0);
+    opacity: 0;
+}
+
+.accordion-collapse.collapse.show {
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+/* Loading spinner styling */
+.spinner-border {
+    border-width: 2px;
+    margin-left: 8px;
+}
+
+/* Alert styling */
+.alert-danger {
+    background-color: rgba(255, 87, 87, 0.1);
+    border: 1px solid rgba(255, 87, 87, 0.2);
+    color: #d32f2f;
+    border-radius: 12px;
+}
+
+/* Add font import */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    h1.text-center {
+        font-size: 2rem;
+    }
+    
+    .card-body {
+        padding: 1.5rem;
+    }
+}
+
+/* Floating elements for visual interest */
+.container {
+    position: relative;
+}
+
+.container::before,
+.container::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.container::before {
+    width: 150px;
+    height: 150px;
+    top: -30px;
+    right: -50px;
+    background: radial-gradient(circle, rgba(78, 205, 196, 0.2), transparent 70%);
+}
+
+.container::after {
+    width: 200px;
+    height: 200px;
+    bottom: 100px;
+    left: -100px;
+    background: radial-gradient(circle, rgba(255, 107, 107, 0.15), transparent 70%);
+}
